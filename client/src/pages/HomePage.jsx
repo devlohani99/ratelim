@@ -11,7 +11,6 @@ export default function HomePage() {
         <li>📊 Track usage and remaining quota</li>
         <li>🛡️ Simple REST API integration</li>
       </ul>
-      <a href="/register" className="inline-block bg-gradient-to-r from-yellow-400 to-yellow-600 text-blue-900 font-semibold px-8 py-3 rounded shadow hover:from-yellow-500 hover:to-yellow-700 border border-yellow-700 transition text-lg">Get Started</a>
     </div>
   );
 } 
