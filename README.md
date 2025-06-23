@@ -120,6 +120,46 @@ curl -X DELETE http://localhost:5000/api/projects/<projectId> -H "x-api-key: <ap
 
 ---
 
+## 🧪 Testing
+
+### Why are tests written?
+- To ensure the code works as expected and catches bugs early
+- To prevent regressions when making changes
+- To document the intended behavior of the code
+- To enable confident refactoring and collaboration
+- To automate quality assurance (QA)
+
+### How to Run the Tests
+1. Go to the `server` directory:
+   ```bash
+   cd server
+   ```
+2. Run all tests with coverage:
+   ```bash
+   npm test
+   ```
+
+### How to Check Coverage
+- After running `npm test`, a coverage summary will appear in your terminal.
+- For a detailed report, open `server/coverage/lcov-report/index.html` in your browser.
+- Take a screenshot of the coverage summary or HTML report and add it to your README.
+
+### Testing Frameworks/Tools Used
+- [Jest](https://jestjs.io/) (test runner)
+- [Supertest](https://github.com/ladjs/supertest) (API endpoint testing)
+- [mongodb-memory-server](https://github.com/nodkz/mongodb-memory-server) (in-memory MongoDB for integration tests)
+
+### Sample Coverage Summary
+```
+------------------|---------|----------|---------|---------|-------------------
+File              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+------------------|---------|----------|---------|---------|-------------------
+All files         |   84.71 |    61.53 |   81.81 |   88.11 |
+... (see your terminal or HTML report for details)
+```
+
+---
+
 ## 📦 GitHub Repository Submission
 - Ensure your repo contains both `server` and `client` folders.
 - Include this `README.md` in the root.
