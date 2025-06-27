@@ -1,0 +1,123 @@
+openapi: 3.0.0
+info:
+  title: Rate Limiter API
+  version: 1.0.0
+  description: API for managing rate limits for users.
+servers:
+  - url: http://localhost:8000
+paths:
+  /limits:
+    get:
+      summary: Get current rate limits for all users
+      operationId: getAllLimits
+      responses:
+        '200':
+          description: A list of rate limits
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RateLimit'
+              examples:
+                example1:
+                  value:
+                    - user: alice
+                      limit: 100
+                    - user: bob
+                      limit: 50
+    post:
+      summary: Set a new rate limit for a user
+      operationId: setLimit
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetLimitRequest'
+            examples:
+              example1:
+                value:
+                  user: alice
+                  limit: 100
+      responses:
+        '201':
+          description: Rate limit set successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimit'
+              examples:
+                example1:
+                  value:
+                    user: alice
+                    limit: 100
+        '400':
+          description: Invalid input
+  /limits/{user}:
+    get:
+      summary: Get rate limit for a specific user
+      operationId: getUserLimit
+      parameters:
+        - in: path
+          name: user
+          required: true
+          schema:
+            type: string
+          example: alice
+      responses:
+        '200':
+          description: Rate limit for the user
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RateLimit'
+              examples:
+                example1:
+                  value:
+                    user: alice
+                    limit: 100
+        '404':
+          description: User not found
+    delete:
+      summary: Delete rate limit for a specific user
+      operationId: deleteUserLimit
+      parameters:
+        - in: path
+          name: user
+          required: true
+          schema:
+            type: string
+          example: alice
+      responses:
+        '204':
+          description: Rate limit deleted
+        '404':
+          description: User not found
+
+components:
+  schemas:
+    RateLimit:
+      type: object
+      properties:
+        user:
+          type: string
+          example: alice
+        limit:
+          type: integer
+          example: 100
+      required:
+        - user
+        - limit
+    SetLimitRequest:
+      type: object
+      properties:
+        user:
+          type: string
+          example: alice
+        limit:
+          type: integer
+          example: 100
+      required:
+        - user
+        - limit

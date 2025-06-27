@@ -1,0 +1,46 @@
+name: API Test Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  api-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: |
+          cd server
+          npm install
+
+      - name: Start API server
+        run: |
+          cd server
+          npm start &
+        env:
+          PORT: 8000
+
+      - name: Wait for server to start
+        run: sleep 10
+
+      - name: Run API tests (cURL script)
+        run: bash limits_api_test.sh
+
+      - name: Download Keploy
+        run: |
+          wget https://github.com/keploy/keploy/releases/latest/download/keploy-linux-amd64 -O keploy
+          chmod +x keploy
+
+      - name: Run Keploy tests
+        run: ./keploy test --proxy-port 8080 --app-port 8000

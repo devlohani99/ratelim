@@ -1,0 +1,4 @@
+🐰 Keploy: 2025-06-27T15:41:53+05:30 	[34mINFO[0m	config file not found; proceeding with flags only
+🐰 Keploy: 2025-06-27T15:41:53+05:30 	[31mERROR[0m	failed to validate flags	{"error": "missing required -c flag or appCmd in config file"}
+🐰 Keploy: 2025-06-27T15:41:53+05:30 	[31mERROR[0m	Error removing file	{"error": "remove keploy-logs.txt: The process cannot access the file because it is being used by another process."}
+🐰 Keploy: 2025-06-27T15:41:53+05:30 	[31mERROR[0m	Failed to delete Keploy Logs	{"error": "remove keploy-logs.txt: The process cannot access the file because it is being used by another process."}
