@@ -37,9 +37,10 @@ jobs:
       - name: Run API tests (cURL script)
         run: bash limits_api_test.sh
 
-      - name: Download Keploy
+      - name: Download and extract Keploy
         run: |
-          wget https://github.com/keploy/keploy/releases/latest/download/keploy-linux-amd64 -O keploy
+          wget https://github.com/keploy/keploy/releases/latest/download/keploy_linux_amd64.tar.gz -O keploy_linux_amd64.tar.gz
+          tar -xzf keploy_linux_amd64.tar.gz
           chmod +x keploy
 
       - name: Run Keploy tests
