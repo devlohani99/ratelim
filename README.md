@@ -4,6 +4,12 @@ A classic, production-ready Rate Limiter as a Service. Instantly add rate limiti
 
 ---
 
+## 🚦 CI Pipeline Result
+
+![CI Pipeline Result](image.png)
+
+---
+
 ## 🚀 Features
 - Register projects and get unique API keys
 - Set custom rate limits per project
