@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import AdSenseAd from '../components/AdSenseAd';
+import AdSenseAd from '../components/ads/AdSenseAd';
 
 const HomePage = () => {
   // Features data
