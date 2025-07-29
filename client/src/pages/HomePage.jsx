@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import AdSenseAd from '../components/ads/AdSenseAd';
+import AdSenseAd from '../components/AdSenseAd';
 
 const HomePage = () => {
   // Features data
@@ -131,7 +131,7 @@ const HomePage = () => {
           <div className="my-12 p-4 bg-gray-50 rounded-xl border border-gray-200">
             <p className="text-xs text-gray-500 text-center mb-2">Advertisement</p>
             <AdSenseAd 
-              slot="YOUR_IN_CONTENT_SLOT"
+              slot="4063126175"  // Your ad slot ID
               format="auto"
               responsive={true}
               className="w-full"
