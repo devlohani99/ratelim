@@ -6,6 +6,9 @@ import LimitPage from './pages/LimitPage';
 import UsagePage from './pages/UsagePage';
 import DeletePage from './pages/DeletePage';
 import AdSenseAd from './components/ads/AdSenseAd';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+import ContactPage from './pages/ContactPage';
 
 const App = () => {
   return (
@@ -45,6 +48,9 @@ const App = () => {
             <Route path="/limits" element={<LimitPage />} />
             <Route path="/usage" element={<UsagePage />} />
             <Route path="/delete" element={<DeletePage />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsOfService />} />
+            <Route path="/contact" element={<ContactPage />} />
           </Routes>
           
           {/* In-Content Ad */}
