@@ -9,23 +9,25 @@ import AdSenseAd from './components/ads/AdSenseAd';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import ContactPage from './pages/ContactPage';
-
+import GuidePage from './pages/GuidePage';
 const App = () => {
   return (
     <Router>
       <div className="min-h-screen bg-gray-100 flex flex-col">
         <Navbar />
-        {/* Top Banner Ad */}
-        <div className="w-full bg-white shadow">
-          <div className="container mx-auto px-4 py-2">
-            <AdSenseAd 
-              slot="YOUR_TOP_BANNER_SLOT"
-              format="auto"
-              responsive={true}
-              className="w-full"
-            />
+        {/* Top Banner Ad - Only on main content pages */}
+        {['/', '/guide', '/limits', '/usage'].includes(window.location.pathname) && (
+          <div className="w-full bg-white shadow">
+            <div className="container mx-auto px-4 py-2">
+              <AdSenseAd 
+                slot="YOUR_TOP_BANNER_SLOT"
+                format="auto"
+                responsive={true}
+                className="w-full"
+              />
+            </div>
           </div>
-        </div>
+        )}
         <div className="flex-1 flex">
           {/* Left Sidebar Ad - Desktop Only */}
           <div className="hidden md:block w-48 flex-shrink-0 p-4">
@@ -51,19 +53,27 @@ const App = () => {
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsOfService />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/guide" element={<GuidePage />} />
           </Routes>
           
-          {/* In-Content Ad */}
-          <div className="container mx-auto px-4 py-8">
-            <AdSenseAd 
-              slot="YOUR_IN_CONTENT_SLOT"
-              format="auto"
-              responsive={true}
-              className="w-full my-8"
-            />
           </div>
           
-          </div>
+          {/* In-Content Ad - Only shown on content-rich pages */}
+          {['/', '/guide', '/limits', '/usage'].includes(window.location.pathname) && (
+            <div className="container mx-auto px-4 py-8">
+              <div className="max-w-4xl mx-auto">
+                <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                  <p className="text-xs text-gray-500 text-center mb-2">Advertisement</p>
+                  <AdSenseAd 
+                    slot="YOUR_IN_CONTENT_SLOT"
+                    format="auto"
+                    responsive={true}
+                    className="w-full mx-auto"
+                  />
+                </div>
+              </div>
+            </div>
+          )}
           
           {/* Right Sidebar Ad - Desktop Only */}
           <div className="hidden md:block w-48 flex-shrink-0 p-4">
